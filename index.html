@@ -4,425 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>礼包分享助力</title>
+    <meta property="og:title" content="邀请姚明熹回归CS2">
+    <meta property="og:description" content="我在发起邀姚明熹回归CS2行动，大侠助我一臂之力吧！">
+    <meta property="og:type" content="website">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             background: linear-gradient(180deg, #FFB347 0%, #FFCC80 30%, #FFF3E0 100%);
             min-height: 100vh;
             overflow-x: hidden;
         }
-        /* Header */
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 16px;
-            background: #fff;
-            border-bottom: 1px solid #f0f0f0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 16px; background: #fff; border-bottom: 1px solid #f0f0f0;
+            position: sticky; top: 0; z-index: 100;
         }
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #333;
-            font-size: 15px;
-        }
-        .header-left svg {
-            width: 20px;
-            height: 20px;
-        }
-        .header-title {
-            font-size: 17px;
-            font-weight: 600;
-            color: #333;
-        }
-        .header-right {
-            width: 40px;
-        }
-        /* Main content */
-        .main {
-            padding: 0 12px 30px;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-        /* Banner area */
+        .header-left { display: flex; align-items: center; gap: 6px; color: #333; font-size: 15px; }
+        .header-left svg { width: 20px; height: 20px; }
+        .header-title { font-size: 17px; font-weight: 600; color: #333; }
+        .header-right { width: 40px; }
+        .main { padding: 0 12px 30px; max-width: 480px; margin: 0 auto; }
         .banner {
             background: linear-gradient(135deg, #FF9800 0%, #FFB74D 50%, #FFA726 100%);
-            border-radius: 16px;
-            padding: 20px 16px 24px;
-            margin-top: 12px;
-            position: relative;
-            overflow: hidden;
+            border-radius: 16px; padding: 20px 16px 24px; margin-top: 12px;
+            position: relative; overflow: hidden;
         }
-        .banner::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 120px;
-            height: 120px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-        .banner::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: 20px;
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 50%;
-        }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: #1565C0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: #fff;
-            font-weight: bold;
-        }
-        .logo-text {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 700;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-        /* Avatar */
-        .avatar-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        .avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            background: #4CAF50;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            margin-bottom: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            overflow: hidden;
-        }
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .username {
-            color: #fff;
-            font-size: 16px;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-        /* Message */
-        .message {
-            background: rgba(255,255,255,0.95);
-            border-radius: 12px;
-            padding: 20px 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-        }
-        .message-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 16px;
-            text-align: center;
-            line-height: 1.5;
-        }
-        .message-title .highlight {
-            color: #E65100;
-            font-weight: 700;
-        }
-        /* Reward tiers */
-        .reward-tiers {
-            display: flex;
-            justify-content: space-between;
-            gap: 4px;
-            margin-bottom: 20px;
-        }
-        .tier {
-            flex: 1;
-            text-align: center;
-        }
-        .tier-label {
-            font-size: 11px;
-            color: #fff;
-            background: #FF9800;
-            padding: 3px 6px;
-            border-radius: 10px;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-        .tier-icon {
-            font-size: 28px;
-            margin-bottom: 4px;
-            opacity: 0.5;
-            transition: all 0.3s;
-        }
-        .tier.active .tier-icon {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .tier-desc {
-            font-size: 10px;
-            color: #888;
-            line-height: 1.3;
-        }
-        /* Progress */
-        .progress-section {
-            margin-bottom: 20px;
-        }
-        .progress-text {
-            font-size: 15px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-        .progress-text .count {
-            font-weight: 700;
-            color: #E65100;
-            font-size: 18px;
-        }
-        .progress-bar-bg {
-            width: 100%;
-            height: 20px;
-            background: #FFE0B2;
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #FF9800, #FFB74D, #FF9800);
-            border-radius: 10px;
-            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .progress-bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 4px;
-            right: 4px;
-            height: 6px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 3px;
-        }
-        /* Buttons */
-        .btn-row {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 24px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-        }
-        .btn:active {
-            transform: scale(0.96);
-        }
-        .btn-boost {
-            background: linear-gradient(135deg, #FF9800, #F57C00);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
-        }
-        .btn-boost:disabled {
-            background: #ccc;
-            color: #999;
-            box-shadow: none;
-            cursor: not-allowed;
-        }
-        .btn-boost:disabled:active {
-            transform: none;
-        }
-        .btn-share {
-            background: linear-gradient(135deg, #FFB74D, #FFA726);
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3);
-        }
-        /* Boost record */
-        .record-section {
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px 16px;
-            margin-top: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-        }
-        .record-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
-            text-align: center;
-            margin-bottom: 16px;
-            position: relative;
-        }
-        .record-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 3px;
-            background: #FF9800;
-            border-radius: 2px;
-            margin: 8px auto 0;
-        }
-        .record-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 0;
-            border-bottom: 1px solid #f5f5f5;
-        }
-        .record-item:last-child {
-            border-bottom: none;
-        }
-        .record-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #E8F5E9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .record-info {
-            flex: 1;
-        }
-        .record-name {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 2px;
-        }
-        .record-msg {
-            font-size: 13px;
-            color: #333;
-        }
-        .record-empty {
-            text-align: center;
-            color: #bbb;
-            font-size: 14px;
-            padding: 20px 0;
-        }
-        /* Toast */
-        .toast {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.75);
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .toast.show {
-            opacity: 1;
-        }
-        /* Confetti */
-        .confetti-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 999;
-            overflow: hidden;
-        }
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 2px;
-            animation: confetti-fall 2s ease-out forwards;
-        }
-        @keyframes confetti-fall {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-        /* Pulse animation for boost button */
-        @keyframes pulse {
-            0% { box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4); }
-            50% { box-shadow: 0 4px 24px rgba(255, 152, 0, 0.7); }
-            100% { box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4); }
-        }
-        .btn-boost:not(:disabled) {
-            animation: pulse 2s infinite;
-        }
+        .banner::before { content: ''; position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+        .banner::after { content: ''; position: absolute; bottom: -30px; left: 20px; width: 80px; height: 80px; background: rgba(255,255,255,0.08); border-radius: 50%; }
+        .logo-area { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+        .logo-icon { width: 36px; height: 36px; background: #1565C0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; font-weight: bold; }
+        .logo-text { color: #fff; font-size: 18px; font-weight: 700; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .avatar-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 16px; }
+        .avatar { width: 72px; height: 72px; border-radius: 50%; border: 3px solid #fff; background: #4CAF50; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); overflow: hidden; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .username { color: #fff; font-size: 16px; font-weight: 600; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .message { background: rgba(255,255,255,0.95); border-radius: 12px; padding: 20px 16px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+        .message-title { font-size: 16px; font-weight: 600; color: #333; margin-bottom: 16px; text-align: center; line-height: 1.5; }
+        .message-title .highlight { color: #E65100; font-weight: 700; }
+        .reward-tiers { display: flex; justify-content: space-between; gap: 4px; margin-bottom: 20px; }
+        .tier { flex: 1; text-align: center; }
+        .tier-label { font-size: 11px; color: #fff; background: #FF9800; padding: 3px 6px; border-radius: 10px; display: inline-block; margin-bottom: 6px; }
+        .tier-icon { font-size: 28px; margin-bottom: 4px; opacity: 0.5; transition: all 0.3s; }
+        .tier.active .tier-icon { opacity: 1; transform: scale(1.1); }
+        .tier-desc { font-size: 10px; color: #888; line-height: 1.3; }
+        .progress-section { margin-bottom: 20px; }
+        .progress-text { font-size: 15px; color: #555; margin-bottom: 10px; }
+        .progress-text .count { font-weight: 700; color: #E65100; font-size: 18px; }
+        .progress-bar-bg { width: 100%; height: 20px; background: #FFE0B2; border-radius: 10px; overflow: hidden; position: relative; }
+        .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #FF9800, #FFB74D, #FF9800); border-radius: 10px; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .progress-bar-fill::after { content: ''; position: absolute; top: 2px; left: 4px; right: 4px; height: 6px; background: rgba(255,255,255,0.3); border-radius: 3px; }
+        .btn-row { display: flex; gap: 12px; margin-bottom: 20px; }
+        .btn { flex: 1; padding: 14px; border: none; border-radius: 24px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center; }
+        .btn:active { transform: scale(0.96); }
+        .btn-boost { background: linear-gradient(135deg, #FF9800, #F57C00); color: #fff; box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4); }
+        .btn-boost:disabled { background: #ccc; color: #999; box-shadow: none; cursor: not-allowed; }
+        .btn-boost:disabled:active { transform: none; }
+        .btn-share { background: linear-gradient(135deg, #FFB74D, #FFA726); color: #fff; box-shadow: 0 4px 12px rgba(255, 167, 38, 0.3); }
+        .record-section { background: #fff; border-radius: 16px; padding: 20px 16px; margin-top: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+        .record-title { font-size: 18px; font-weight: 700; color: #333; text-align: center; margin-bottom: 16px; position: relative; }
+        .record-title::after { content: ''; display: block; width: 40px; height: 3px; background: #FF9800; border-radius: 2px; margin: 8px auto 0; }
+        .record-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; }
+        .record-item:last-child { border-bottom: none; }
+        .record-avatar { width: 40px; height: 40px; border-radius: 50%; background: #E8F5E9; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .record-info { flex: 1; }
+        .record-name { font-size: 14px; color: #666; margin-bottom: 2px; }
+        .record-msg { font-size: 13px; color: #333; }
+        .record-empty { text-align: center; color: #bbb; font-size: 14px; padding: 20px 0; }
+        .status-bar { text-align: center; font-size: 12px; color: #999; margin-top: 12px; }
+        .toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.75); color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 14px; z-index: 1000; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .toast.show { opacity: 1; }
+        .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; overflow: hidden; }
+        .confetti { position: absolute; width: 10px; height: 10px; border-radius: 2px; animation: confetti-fall 2s ease-out forwards; }
+        @keyframes confetti-fall { 0% { transform: translateY(-10px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+        @keyframes pulse { 0% { box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4); } 50% { box-shadow: 0 4px 24px rgba(255, 152, 0, 0.7); } 100% { box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4); } }
+        .btn-boost:not(:disabled) { animation: pulse 2s infinite; }
+        /* Name modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; display: flex; align-items: center; justify-content: center; }
+        .modal-box { background: #fff; border-radius: 16px; padding: 24px; width: 80%; max-width: 320px; text-align: center; }
+        .modal-box h3 { margin-bottom: 16px; color: #333; }
+        .modal-box input { width: 100%; padding: 10px 12px; border: 2px solid #FFB74D; border-radius: 8px; font-size: 16px; text-align: center; outline: none; margin-bottom: 16px; }
+        .modal-box input:focus { border-color: #FF9800; }
+        .modal-box button { background: linear-gradient(135deg, #FF9800, #F57C00); color: #fff; border: none; padding: 10px 32px; border-radius: 20px; font-size: 15px; font-weight: 600; cursor: pointer; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
             首页
         </div>
         <div class="header-title">礼包分享助力</div>
         <div class="header-right"></div>
     </div>
 
-    <!-- Main -->
     <div class="main">
-        <!-- Banner -->
         <div class="banner">
             <div class="logo-area">
                 <div class="logo-icon">CS</div>
                 <div class="logo-text">CS2 召回计划</div>
             </div>
             <div class="avatar-section">
-                <div class="avatar">
-                    🎮
-                </div>
-                <div class="username">Luke</div>
+                <div class="avatar">🎮</div>
+                <div class="username" id="displayName">Luke</div>
             </div>
         </div>
 
-        <!-- Message card -->
         <div class="message">
             <div class="message-title">
                 我在发起<span class="highlight">邀姚明熹回归CS2</span>行动，大侠助我一臂之力吧！
             </div>
-
-            <!-- Reward tiers -->
             <div class="reward-tiers">
                 <div class="tier" data-threshold="1">
                     <div class="tier-label">1人助力</div>
@@ -450,66 +142,123 @@
                     <div class="tier-desc">姚明熹回归！</div>
                 </div>
             </div>
-
-            <!-- Progress -->
             <div class="progress-section">
                 <div class="progress-text">助力人数：<span class="count" id="boostCount">0</span>/5</div>
                 <div class="progress-bar-bg">
                     <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
                 </div>
             </div>
-
-            <!-- Buttons -->
             <div class="btn-row">
                 <button class="btn btn-boost" id="boostBtn" onclick="doBoost()">为他助力</button>
                 <button class="btn btn-share" onclick="sharePage()">分享给好友</button>
             </div>
         </div>
 
-        <!-- Record -->
         <div class="record-section">
             <div class="record-title">助力记录</div>
             <div id="recordList">
                 <div class="record-empty">还没有人助力，快来当第一个吧！</div>
             </div>
         </div>
+        <div class="status-bar" id="statusBar">加载中...</div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
-
-    <!-- Confetti container -->
     <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Name modal -->
+    <div class="modal-overlay hidden" id="nameModal">
+        <div class="modal-box">
+            <h3>你的名字是？</h3>
+            <input type="text" id="nameInput" placeholder="输入昵称" maxlength="10">
+            <br>
+            <button onclick="confirmName()">确定</button>
+        </div>
+    </div>
 
     <script>
         const MAX_BOOST = 5;
-        const STORAGE_KEY = 'cs2_boost_data';
+        const API_HOST = 'https://unified-quagga-137441.upstash.io';
+        const API_TOKEN = 'gQAAAAAAAhjhAQIgcDEyMTU3N2IxMmQ3NDE0M2I5YjM1MWI0MDhmNDgwZDJiNQ';
+        const COUNT_KEY = 'cs2-boost-count';
+        const RECORDS_KEY = 'cs2-boost-records';
+        const EMOJIS = ['😎', '🔥', '💪', '🎯', '🏆', '⭐', '🎮', '❤️', '🤝', '👊'];
+        const MESSAGES = [
+            '觉得TA太有诚意了，忍不住助力一次！',
+            '姚明熹快回来，我们等你！',
+            'CS2不能没有你，助力！',
+            '为了兄弟，冲！',
+            '这个必须支持！',
+            '已助力，坐等姚明熹回归',
+            '安排上了！',
+            '助力助力，早日回归',
+        ];
 
-        function getData() {
+        // State
+        let myName = localStorage.getItem('cs2_my_name') || '';
+        let hasBoosted = localStorage.getItem('cs2_has_boosted') === 'true';
+        let currentCount = 0;
+        let currentRecords = [];
+
+        // --- Upstash REST API helpers ---
+        async function apiGet(key) {
+            const resp = await fetch(`${API_HOST}/get/${key}`, {
+                headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+            });
+            const data = await resp.json();
+            return data.result;
+        }
+
+        async function apiSet(key, value) {
+            const encoded = encodeURIComponent(value);
+            const resp = await fetch(`${API_HOST}/set/${key}/${encoded}`, {
+                headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+            });
+            return await resp.json();
+        }
+
+        async function apiIncr(key) {
+            const resp = await fetch(`${API_HOST}/incr/${key}`, {
+                headers: { 'Authorization': `Bearer ${API_TOKEN}` }
+            });
+            const data = await resp.json();
+            return data.result;
+        }
+
+        // --- Load data from server ---
+        async function loadData() {
             try {
-                const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
-                if (data) return data;
-            } catch(e) {}
-            return { count: 0, records: [], boosted: false };
+                const [countStr, recordsStr] = await Promise.all([
+                    apiGet(COUNT_KEY),
+                    apiGet(RECORDS_KEY)
+                ]);
+                currentCount = parseInt(countStr) || 0;
+                try {
+                    currentRecords = recordsStr ? JSON.parse(recordsStr) : [];
+                } catch (e) {
+                    currentRecords = [];
+                }
+                document.getElementById('statusBar').textContent = `实时数据 · 共${currentCount}人助力`;
+            } catch (e) {
+                console.error('Failed to load:', e);
+                document.getElementById('statusBar').textContent = '数据加载失败，点击助力重试';
+            }
+            updateUI();
         }
 
-        function saveData(data) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        }
-
+        // --- UI Update ---
         function updateUI() {
-            const data = getData();
-            const count = Math.min(data.count, MAX_BOOST);
+            const count = Math.min(currentCount, MAX_BOOST);
             const percent = (count / MAX_BOOST) * 100;
 
             document.getElementById('boostCount').textContent = count;
             document.getElementById('progressBar').style.width = percent + '%';
 
             const btn = document.getElementById('boostBtn');
-            if (data.boosted) {
-                btn.textContent = '已助力过';
+            if (hasBoosted) {
+                btn.textContent = '已助力 ✓';
                 btn.disabled = true;
-            } else if (count >= MAX_BOOST) {
+            } else if (currentCount >= MAX_BOOST) {
                 btn.textContent = '助力人数已满';
                 btn.disabled = true;
             } else {
@@ -517,101 +266,118 @@
                 btn.disabled = false;
             }
 
-            // Update tier active states
             document.querySelectorAll('.tier').forEach(tier => {
                 const threshold = parseInt(tier.dataset.threshold);
-                if (count >= threshold) {
-                    tier.classList.add('active');
-                } else {
-                    tier.classList.remove('active');
-                }
+                tier.classList.toggle('active', currentCount >= threshold);
             });
 
-            // Update records
             const recordList = document.getElementById('recordList');
-            if (data.records.length === 0) {
+            if (currentRecords.length === 0) {
                 recordList.innerHTML = '<div class="record-empty">还没有人助力，快来当第一个吧！</div>';
             } else {
-                const messages = [
-                    '觉得TA太有诚意了，忍不住助力一次！',
-                    '姚明熹快回来，我们等你！',
-                    'CS2不能没有你，助力！',
-                    '为了兄弟，冲！',
-                    '这个必须支持！',
-                    '已助力，坐等姚明熹回归',
-                    '安排上了！',
-                    '助力助力，早日回归',
-                ];
                 let html = '';
-                data.records.forEach((r, i) => {
-                    const emojis = ['😎', '🔥', '', '🎯', '🏆', '⭐', '🎮', '❤️'];
-                    const emoji = emojis[i % emojis.length];
+                currentRecords.forEach((r, i) => {
+                    const emoji = EMOJIS[i % EMOJIS.length];
                     html += `
                         <div class="record-item">
                             <div class="record-avatar">${emoji}</div>
                             <div class="record-info">
-                                <div class="record-name">${r.name}</div>
-                                <div class="record-msg">${r.msg}</div>
+                                <div class="record-name">${escapeHtml(r.name)}</div>
+                                <div class="record-msg">${escapeHtml(r.msg)}</div>
                             </div>
-                        </div>
-                    `;
+                        </div>`;
                 });
                 recordList.innerHTML = html;
             }
         }
 
-        function doBoost() {
-            const data = getData();
-            if (data.boosted) {
-                showToast('你已经助力过啦~');
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // --- Boost action ---
+        async function doBoost() {
+            if (hasBoosted) { showToast('你已经助力过啦~'); return; }
+            if (currentCount >= MAX_BOOST) { showToast('助力人数已满！'); return; }
+
+            // Ask for name if not set
+            if (!myName) {
+                document.getElementById('nameModal').classList.remove('hidden');
+                document.getElementById('nameInput').focus();
                 return;
             }
-            if (data.count >= MAX_BOOST) {
-                showToast('助力人数已满！');
-                return;
-            }
 
-            data.count++;
-            data.boosted = true;
+            await submitBoost();
+        }
 
-            const names = ['热心群友', 'CS老玩家', '路过的朋友', '同班同学', '好兄弟'];
-            const msgs = [
-                '觉得TA太有诚意了，忍不住助力一次！',
-                '姚明熹快回来，我们等你！',
-                'CS2不能没有你，助力！',
-                '为了兄弟，冲！',
-                '这个必须支持！',
-            ];
-            data.records.push({
-                name: names[Math.floor(Math.random() * names.length)],
-                msg: msgs[Math.floor(Math.random() * msgs.length)],
-                time: Date.now()
-            });
+        async function submitBoost() {
+            const btn = document.getElementById('boostBtn');
+            btn.disabled = true;
+            btn.textContent = '助力中...';
 
-            saveData(data);
-            updateUI();
+            try {
+                // 1. Increment count
+                const newCount = await apiIncr(COUNT_KEY);
+                currentCount = newCount;
 
-            if (data.count >= MAX_BOOST) {
-                showToast('🎉 助力完成！姚明熹快回来吧！');
-                launchConfetti();
-            } else {
-                showToast('助力成功！感谢你的支持 🙏');
+                // 2. Read current records, append new record
+                const recordsStr = await apiGet(RECORDS_KEY);
+                let records;
+                try { records = recordsStr ? JSON.parse(recordsStr) : []; } catch (e) { records = []; }
+
+                const msg = MESSAGES[Math.floor(Math.random() * MESSAGES.length)];
+                records.push({ name: myName, msg: msg, time: Date.now() });
+                currentRecords = records;
+
+                // 3. Write updated records back
+                await apiSet(RECORDS_KEY, JSON.stringify(records));
+
+                // 4. Save local state
+                hasBoosted = true;
+                localStorage.setItem('cs2_has_boosted', 'true');
+                localStorage.setItem('cs2_my_name', myName);
+
+                updateUI();
+
+                if (currentCount >= MAX_BOOST) {
+                    showToast('🎉 助力完成！姚明熹快回来吧！');
+                    launchConfetti();
+                } else {
+                    showToast('助力成功！感谢你的支持 🙏');
+                }
+            } catch (e) {
+                console.error('Boost failed:', e);
+                showToast('助力失败，请重试');
+                btn.disabled = false;
+                btn.textContent = '为他助力';
             }
         }
 
+        function confirmName() {
+            const input = document.getElementById('nameInput');
+            const name = input.value.trim();
+            if (!name) { showToast('请输入昵称'); return; }
+            myName = name;
+            localStorage.setItem('cs2_my_name', myName);
+            document.getElementById('nameModal').classList.add('hidden');
+            submitBoost();
+        }
+
+        // --- Share ---
         function sharePage() {
             const url = window.location.href;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(url).then(() => {
                     showToast('链接已复制，快去分享给好友吧！');
-                }).catch(() => {
-                    showToast('请手动复制链接分享给好友');
-                });
+                }).catch(() => showToast('请手动复制链接分享给好友'));
             } else {
                 showToast('请手动复制链接分享给好友');
             }
         }
 
+        // --- Toast ---
         function showToast(msg) {
             const toast = document.getElementById('toast');
             toast.textContent = msg;
@@ -619,6 +385,7 @@
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
+        // --- Confetti ---
         function launchConfetti() {
             const container = document.getElementById('confettiContainer');
             const colors = ['#FF9800', '#FF5722', '#FFC107', '#4CAF50', '#2196F3', '#E91E63', '#9C27B0'];
@@ -637,8 +404,15 @@
             setTimeout(() => container.innerHTML = '', 3500);
         }
 
-        // Init
-        updateUI();
+        // --- Enter key for name input ---
+        document.getElementById('nameInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') confirmName();
+        });
+
+        // --- Init ---
+        loadData();
+        // Auto refresh every 30 seconds to show others' boosts
+        setInterval(loadData, 30000);
     </script>
 </body>
 </html>
